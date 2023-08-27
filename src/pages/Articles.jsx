@@ -20,7 +20,7 @@ function Articles() {
       setArticles(articles);
     });
   }, []);
-  console.log(articles);
+  // console.log(articles);
   return (
     <HelmetProvider>
       <Helmet>

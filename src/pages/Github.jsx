@@ -85,17 +85,18 @@ function Github() {
           </div>
         </div>
         <div className="grid gap-x-5 gap-y-5 md:grid-cols-2 xl:grid-cols-4">
-          {repoInfo.map((r) => {
-            return (
-              <RepoCard
-                key={r.id}
-                name={r.name}
-                desc={r.description}
-                url={r.url}
-                homepage={r.homepage}
-              />
-            );
-          })}
+          {repoInfo &&
+            repoInfo.map((r) => {
+              return (
+                <RepoCard
+                  key={r.id}
+                  name={r.name}
+                  desc={r.description}
+                  url={r.url}
+                  homepage={r.homepage}
+                />
+              );
+            })}
         </div>
         <div className="h-full w-full  text-textColor">
           <ActivityCalendar
