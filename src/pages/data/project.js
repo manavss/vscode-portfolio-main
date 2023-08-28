@@ -2,6 +2,7 @@ import cart from "../../assets/images/cart.jpg";
 import dictionary from "../../assets/images/dictionary.jpg";
 import nike from "../../assets/images/nike.jpg";
 import rest from "../../assets/images/rest.jpg";
+import vscode from "../../assets/images/vscode.jpg";
 export const project = [
   {
     title: "Ecommerce",
@@ -38,5 +39,14 @@ export const project = [
     tags: ["react", "tailwind", "context-api"],
     sourceCode: "https://github.com/manavss/restCountries",
     demo: "https://restcountrydetails.netlify.app/",
+  },
+  {
+    title: "Vs-Code Portfolio",
+    description:
+      "A Visual Studio Code themed developer portfolio website built with React.js and Tailwind.",
+    image: vscode,
+    tags: ["react", "tailwind", "axios"],
+    sourceCode: "https://github.com/manavss/vscode-portfolio-main",
+    demo: "https://vscode-portfolio-main.vercel.app/",
   },
 ];
