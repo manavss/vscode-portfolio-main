@@ -5,7 +5,7 @@ import ActivityCalendar from "react-github-calendar";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 function Github() {
-  // const authToken = "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";
+  const authToken = "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";
   const theme = {
     dark: ["#161B22", "#0e4429", "#006d32", "#26a641", "#39d353"],
   };
@@ -19,7 +19,7 @@ function Github() {
           "https://api.github.com/users/manavss",
           {
             headers: {
-              Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+              Authorization: `token ${authToken}`,
             },
           },
         );
@@ -35,7 +35,7 @@ function Github() {
           "https://api.github.com/users/manavss/repos",
           {
             headers: {
-              Authorization: `token ${import.meta.env.VITE_GITHUB_TOKEN}`,
+              Authorization: `token ${authToken}`,
             },
           },
         );
