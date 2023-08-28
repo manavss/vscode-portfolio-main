@@ -23,7 +23,7 @@ function About() {
       <div className=" flex flex-col  items-center justify-center gap-y-4 p-8 text-textColor xl:gap-y-12 ">
         <div className="flex flex-col items-center gap-x-48 xl:flex-row">
           <div className=" xl:order-2">
-            <div className=" box border-4 border-accentColor xl:h-[350px] xl:w-[350px] "></div>
+            <div className=" box border-4 border-accentColor xl:h-[300px] xl:w-[300px] "></div>
           </div>
           <div>
             <h1 className="text-center text-3xl font-extrabold text-white xl:text-start xl:text-6xl">
