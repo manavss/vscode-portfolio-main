@@ -1,43 +1,61 @@
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 import Main from "./components/Main";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Projects from "./pages/Projects";
-import Articles from "./pages/Articles";
-import Github from "./pages/Github";
-import Settings from "./pages/Settings";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import Home from "./features/home/Home";
+import About from "./features/about/About";
+import Contact from "./features/contact/Contact";
+import Projects from "./features/projects/Projects";
+import Articles, {
+  loader as ArticlesLoader,
+} from "./features/articles/Articles";
+import Github, { loader as GithubLoader } from "./features/github/Github";
+import Settings from "./features/settings/Settings";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
+import ErrorPage from "./features/error/ErrorPage";
+
+const router = createBrowserRouter([
+  {
+    element: <Main />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/projects",
+        element: <Projects />,
+      },
+      {
+        path: "/articles",
+        element: <Articles />,
+        loader: ArticlesLoader,
+      },
+      {
+        path: "/github",
+        element: <Github />,
+        loader: GithubLoader,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  const [theme, setTheme] = useState("nightOwl");
-  const changeTheme = (theme) => {
-    setTheme(theme);
-  };
-  // console.log(theme);
   return (
-    <div className={`min-h-full theme-${theme}`}>
-      <BrowserRouter>
-        <NavBar theme={theme} />
-        <Routes>
-          <Route path="/" element={<Main />}>
-            <Route index element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/articles" element={<Articles />} />
-            <Route path="/github" element={<Github />} />
-            <Route
-              path="/settings"
-              element={<Settings changeTheme={changeTheme} />}
-            />
-          </Route>
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   );
 }
 

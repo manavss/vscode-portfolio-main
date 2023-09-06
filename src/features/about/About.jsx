@@ -1,10 +1,10 @@
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import react_icon from "../assets/icons/react_icon.svg";
-import html_icon from "../assets/icons/html_icon.svg";
-import css_icon from "../assets/icons/css_icon.svg";
-import js_icon from "../assets/icons/js_icon.svg";
-import tailwind_icon from "../assets/icons/tw-icon.svg";
-import python_icon from "../assets/icons/python-5.svg";
+import react_icon from "../../assets/icons/react_icon.svg";
+import html_icon from "../../assets/icons/html_icon.svg";
+import css_icon from "../../assets/icons/css_icon.svg";
+import js_icon from "../../assets/icons/js_icon.svg";
+import tailwind_icon from "../../assets/icons/tw-icon.svg";
+import python_icon from "../../assets/icons/python-5.svg";
 function About() {
   const techStack = [
     html_icon,

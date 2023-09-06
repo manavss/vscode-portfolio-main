@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import ContactSocials from "../components/ContactSocials";
+import ContactSocials from "./ContactSocials";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import emailjs from "@emailjs/browser";
 import { useRef } from "react";

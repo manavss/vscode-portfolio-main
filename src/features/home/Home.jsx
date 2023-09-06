@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Illustration from "../components/Illustration";
+import Illustration from "./Illustration";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 function Home() {
   return (
@@ -28,7 +28,7 @@ function Home() {
                 View Work
               </button>
             </Link>
-            <Link to={`${"/projects"}`}>
+            <Link to={`${"/contact"}`}>
               <button className=" ml-3 border-2 border-accentColor px-5 py-2 text-textColor md:ml-6 md:px-8 md:text-xl">
                 Contact Me
               </button>

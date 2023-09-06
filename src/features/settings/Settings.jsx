@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import ThemeCard from "../components/ThemeCard";
-import Dracula from "../assets/images/dracula.png";
-import NightOwl from "../assets/images/night-owl.png";
-import Github from "../assets/images/github-dark.png";
-import Nord from "../assets/images/nord.png";
-import Ayu from "../assets/images/ayu.png";
+import ThemeCard from "./ThemeCard";
+import Dracula from "../../assets/images/dracula.png";
+import NightOwl from "../../assets/images/night-owl.png";
+import Github from "../../assets/images/github-dark.png";
+import Nord from "../../assets/images/nord.png";
+import Ayu from "../../assets/images/ayu.png";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
-function Settings({ changeTheme }) {
+function Settings() {
   const themeInfo = [
     {
       name: "Dracula",
@@ -36,7 +36,7 @@ function Settings({ changeTheme }) {
     { name: "Ayu Mirage", publisher: "teabyii", theme: "ayuMirage", img: Ayu },
     { name: "Ayu Dark", publisher: "teabyii", theme: "ayuDark", img: Ayu },
   ];
-  // console.log(theme);
+
   return (
     <HelmetProvider>
       <div className="p-8">
@@ -53,7 +53,7 @@ function Settings({ changeTheme }) {
                 img={th.img}
                 publisher={th.publisher}
                 theme={th.theme}
-                changeTheme={changeTheme}
+                // changeTheme={changeTheme}
               />
             );
           })}

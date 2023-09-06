@@ -1,6 +1,6 @@
-import ProjectCard from "../components/ProjectCard";
+import ProjectCard from "./ProjectCard";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { project } from "./data/project";
+import { project } from "./project";
 function projects() {
   return (
     <HelmetProvider>

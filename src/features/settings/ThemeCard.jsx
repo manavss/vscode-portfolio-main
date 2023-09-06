@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 
-function ThemeCard({ name, publisher, theme, img, changeTheme }) {
+import { useTheme } from "../../context/ThemeContext";
+
+function ThemeCard({ name, publisher, theme, img }) {
+  const { changeTheme } = useTheme();
   return (
     <div
       className={`flex flex-col items-center justify-between gap-y-3 bg-mainBg p-4 text-center text-textColor`}

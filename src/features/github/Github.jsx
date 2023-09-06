@@ -1,58 +1,15 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import RepoCard from "../components/RepoCard";
+import RepoCard from "./RepoCard";
 import ActivityCalendar from "react-github-calendar";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { getUser } from "../../services/apiGithub";
+import { useLoaderData } from "react-router";
 
 function Github() {
-  // const authToken = "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";
+  const [user, repos] = useLoaderData();
+  const repoInfo = repos.filter((r) => r.stargazers_count > 0);
   const theme = {
     dark: ["#161B22", "#0e4429", "#006d32", "#26a641", "#39d353"],
   };
-  const [user, setUser] = useState([]);
-  const [repo, setRepo] = useState([]);
-  const repoInfo = repo.filter((r) => r.stargazers_count > 0);
-  useEffect(() => {
-    async function fetchUser() {
-      try {
-        const response = await axios.get(
-          "https://api.github.com/users/manavss",
-          // {
-          //   headers: {
-          //     Authorization: `token ${authToken}`,
-          //   },
-          // },
-        );
-        return response.data;
-      } catch (error) {
-        console.error("Error fetching user:", error);
-        return null;
-      }
-    }
-    async function fetchRepo() {
-      try {
-        const response = await axios.get(
-          "https://api.github.com/users/manavss/repos",
-          // {
-          //   headers: {
-          //     Authorization: `token ${authToken}`,
-          //   },
-          // },
-        );
-        return response.data;
-      } catch (error) {
-        console.error("Error fetching user:", error);
-        return null;
-      }
-    }
-
-    fetchUser().then((userInfo) => {
-      setUser(userInfo);
-    });
-    fetchRepo().then((repoInfo) => {
-      setRepo(repoInfo);
-    });
-  }, []);
 
   return (
     <HelmetProvider>
@@ -67,7 +24,7 @@ function Github() {
                 width={60}
                 height={60}
                 className="  rounded-full"
-                src={user.avatar_url}
+                src={user ? user.avatar_url : "Not found"}
                 alt=""
               />
             </span>
@@ -77,11 +34,13 @@ function Github() {
           </div>
           <div className="pl-2">
             <h2 className=" text-lg  font-medium text-textColor md:text-2xl">
-              {user.public_repos} Repos
+              {user ? user.public_repos : 20} Repos
             </h2>
           </div>
           <div className="hidden pl-2 text-textColor   md:block ">
-            <h2 className="md:text-2xl">{user.bio}</h2>
+            <h2 className="md:text-2xl">
+              {user ? user.bio : "I love writing frontend."}
+            </h2>
           </div>
         </div>
         <div className="grid gap-x-5 gap-y-5 md:grid-cols-2 xl:grid-cols-4">
@@ -92,7 +51,7 @@ function Github() {
                   key={r.id}
                   name={r.name}
                   desc={r.description}
-                  url={r.url}
+                  url={r.html_url}
                   homepage={r.homepage}
                 />
               );
@@ -110,6 +69,11 @@ function Github() {
       </div>
     </HelmetProvider>
   );
+}
+
+export async function loader() {
+  const github = getUser();
+  return github;
 }
 
 export default Github;

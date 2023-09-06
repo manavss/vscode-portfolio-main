@@ -1,26 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import ArticleCard from "../components/ArticleCard";
+import ArticleCard from "./ArticleCard";
+import { getArticles } from "../../services/apiArticles";
+import { useLoaderData } from "react-router";
 
 function Articles() {
-  const [articles, setArticles] = useState([]);
-  useEffect(() => {
-    async function fetchArticles() {
-      try {
-        const response = await axios.get(
-          ` https://dev.to/api/articles?username=manavss`,
-        );
-        return response.data;
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchArticles().then((articles) => {
-      setArticles(articles);
-    });
-  }, []);
-  // console.log(articles);
+  const articles = useLoaderData();
   return (
     <HelmetProvider>
       <Helmet>
@@ -55,6 +39,10 @@ function Articles() {
       </div>
     </HelmetProvider>
   );
+}
+export async function loader() {
+  const articles = await getArticles();
+  return articles;
 }
 
 export default Articles;

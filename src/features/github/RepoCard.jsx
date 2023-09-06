@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import github_icon from "../assets/icons/github_icon.svg";
-import link_icon from "../assets/icons/link_icon.svg";
+import github_icon from "../../assets/icons/github_icon.svg";
+import link_icon from "../../assets/icons/link_icon.svg";
 
 function RepoCard({ name, desc, url, homepage }) {
   return (

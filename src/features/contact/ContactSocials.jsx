@@ -25,6 +25,11 @@ function ContactSocials() {
       un: "manavss",
       href: "https://www.frontendmentor.io/profile/manavss",
     },
+{
+social:"dev.to",
+un:"manavss",
+href:"https://www.dev.to"
+}
   ];
   return (
     <div className="line-container flex flex-col">
